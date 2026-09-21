@@ -40,3 +40,13 @@ When('I go back home', async ({ page }) => {
   const checkoutPage = new CheckoutPage(page);
   await checkoutPage.clickBackHome();
 });
+
+Then('the item total should be {string}', async ({ page }, total: string) => {
+  const checkoutPage = new CheckoutPage(page);
+  expect(await checkoutPage.getItemTotal()).toBe(total);
+});
+
+When('I cancel the order', async ({ page }) => {
+  const checkoutPage = new CheckoutPage(page);
+  await checkoutPage.clickCancel();
+});

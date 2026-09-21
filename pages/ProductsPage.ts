@@ -46,4 +46,16 @@ export class ProductsPage extends BasePage {
     await this.page.click('#react-burger-menu-btn');
     await this.page.click('#logout_sidebar_link');
   }
+
+  async removeFromCart(productName: string) {
+    await this.page.locator(`.inventory_item:has-text("${productName}") button.btn_secondary`).click();
+  }
+
+  async isCartBadgeVisible(): Promise<boolean> {
+    return await this.page.locator(this.cartBadge).isVisible();
+  }
+
+  async getProductPrice(productName: string): Promise<string> {
+    return await this.page.locator(`.inventory_item:has-text("${productName}") .inventory_item_price`).innerText();
+  }
 }

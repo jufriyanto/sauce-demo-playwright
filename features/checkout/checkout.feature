@@ -47,3 +47,18 @@ Feature: Checkout
     And I finish the order
     And I go back home
     Then I should see "Products" as the page title
+
+  Scenario: Checkout overview shows correct item total
+    When I add "Sauce Labs Backpack" to the cart
+    And I go to the cart
+    And I proceed to checkout
+    And I fill checkout info with "John", "Doe", and "12345"
+    Then the item total should be "Item total: $29.99"
+
+  Scenario: Cancel from checkout overview
+    When I add "Sauce Labs Backpack" to the cart
+    And I go to the cart
+    And I proceed to checkout
+    And I fill checkout info with "John", "Doe", and "12345"
+    And I cancel the order
+    Then I should see "Products" as the page title

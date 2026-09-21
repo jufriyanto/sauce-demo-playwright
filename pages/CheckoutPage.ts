@@ -36,4 +36,13 @@ export class CheckoutPage extends BasePage {
     await this.page.click('[data-test="back-to-products"]');
     await this.page.waitForURL('**/inventory.html');
   }
+
+  async getItemTotal(): Promise<string> {
+    return await this.page.locator('.summary_subtotal_label').innerText();
+  }
+
+  async clickCancel() {
+    await this.page.click('[data-test="cancel"]');
+    await this.page.waitForURL('**/inventory.html');
+  }
 }

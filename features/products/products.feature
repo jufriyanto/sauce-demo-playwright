@@ -36,3 +36,11 @@ Feature: Products
     When I click on product "Sauce Labs Backpack"
     And I add the product to cart from the detail page
     Then the cart badge should show "1"
+
+  Scenario: Remove product from cart on products page
+    When I add "Sauce Labs Backpack" to the cart
+    And I remove "Sauce Labs Backpack" from the cart on the products page
+    Then the cart badge should not be visible
+
+  Scenario: Product price is displayed on the list
+    Then I should see the price of "Sauce Labs Backpack" as "$29.99"

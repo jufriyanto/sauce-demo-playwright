@@ -44,3 +44,18 @@ When('I add the product to cart from the detail page', async ({ page }) => {
   const detailPage = new ProductDetailPage(page);
   await detailPage.addToCart();
 });
+
+When('I remove {string} from the cart on the products page', async ({ page }, productName: string) => {
+  const productsPage = new ProductsPage(page);
+  await productsPage.removeFromCart(productName);
+});
+
+Then('the cart badge should not be visible', async ({ page }) => {
+  const productsPage = new ProductsPage(page);
+  expect(await productsPage.isCartBadgeVisible()).toBe(false);
+});
+
+Then('I should see the price of {string} as {string}', async ({ page }, productName: string, price: string) => {
+  const productsPage = new ProductsPage(page);
+  expect(await productsPage.getProductPrice(productName)).toBe(price);
+});
