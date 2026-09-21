@@ -36,5 +36,6 @@ export class CartPage extends BasePage {
 
   async continueShopping() {
     await this.page.click('#continue-shopping');
+    await this.page.waitForURL('**/inventory.html');
   }
 }

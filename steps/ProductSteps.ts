@@ -6,8 +6,7 @@ import { ProductDetailPage } from '../pages/ProductDetailPage';
 const { When, Then } = createBdd();
 
 Then('I should see {string} as the page title', async ({ page }, title: string) => {
-  const productsPage = new ProductsPage(page);
-  expect(await productsPage.getTitle()).toBe(title);
+  await expect(page.locator('.title')).toHaveText(title);
 });
 
 Then('I should see {int} products', async ({ page }, count: number) => {

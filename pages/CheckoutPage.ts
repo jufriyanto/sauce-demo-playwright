@@ -34,5 +34,6 @@ export class CheckoutPage extends BasePage {
 
   async clickBackHome() {
     await this.page.click('[data-test="back-to-products"]');
+    await this.page.waitForURL('**/inventory.html');
   }
 }
