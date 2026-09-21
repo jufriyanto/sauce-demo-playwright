@@ -16,3 +16,9 @@ Feature: Shopping Cart
     When I add "Sauce Labs Backpack" to the cart
     And I go to the cart
     Then I should see "Sauce Labs Backpack" in the cart
+
+  Scenario: Remove a product from cart
+    When I add "Sauce Labs Backpack" to the cart
+    And I go to the cart
+    And I remove "Sauce Labs Backpack" from the cart
+    Then the cart should be empty

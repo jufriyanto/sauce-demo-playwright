@@ -14,3 +14,8 @@ Feature: Login
     Given I am on the login page
     When I login with username "" and password ""
     Then I should see an error message "Epic sadface: Username is required"
+
+  Scenario: Login with locked out user
+    Given I am on the login page
+    When I login with username "locked_out_user" and password "secret_sauce"
+    Then I should see an error message "Epic sadface: Sorry, this user has been locked out"

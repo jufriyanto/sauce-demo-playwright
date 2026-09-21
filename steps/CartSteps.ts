@@ -33,3 +33,13 @@ Then('I should see {string} in the cart', async ({ page }, productName: string) 
   const items = await cartPage.getItemNames();
   expect(items).toContain(productName);
 });
+
+When('I remove {string} from the cart', async ({ page }, productName: string) => {
+  const cartPage = new CartPage(page);
+  await cartPage.removeItem(productName);
+});
+
+Then('the cart should be empty', async ({ page }) => {
+  const cartPage = new CartPage(page);
+  expect(await cartPage.isEmpty()).toBe(true);
+});

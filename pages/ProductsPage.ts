@@ -25,4 +25,25 @@ export class ProductsPage extends BasePage {
   async goToCart() {
     await this.page.locator('.shopping_cart_link').click();
   }
+
+  async getProductCount(): Promise<number> {
+    return await this.page.locator('.inventory_item').count();
+  }
+
+  async getProductNames(): Promise<string[]> {
+    return await this.page.locator('.inventory_item_name').allInnerTexts();
+  }
+
+  async sortBy(value: string) {
+    await this.page.selectOption('[data-test="product-sort-container"]', value);
+  }
+
+  async clickProduct(name: string) {
+    await this.page.locator(`.inventory_item_name:text("${name}")`).click();
+  }
+
+  async logout() {
+    await this.page.click('#react-burger-menu-btn');
+    await this.page.click('#logout_sidebar_link');
+  }
 }

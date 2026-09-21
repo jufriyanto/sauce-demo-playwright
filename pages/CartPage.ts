@@ -25,4 +25,12 @@ export class CartPage extends BasePage {
   async clickCheckout() {
     await this.page.click(this.checkoutButton);
   }
+
+  async removeItem(productName: string) {
+    await this.page.locator(`.cart_item:has-text("${productName}") button`).click();
+  }
+
+  async isEmpty(): Promise<boolean> {
+    return (await this.page.locator(this.cartItems).count()) === 0;
+  }
 }
