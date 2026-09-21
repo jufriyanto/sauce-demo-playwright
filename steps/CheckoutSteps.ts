@@ -50,3 +50,18 @@ When('I cancel the order', async ({ page }) => {
   const checkoutPage = new CheckoutPage(page);
   await checkoutPage.clickCancel();
 });
+
+When('I cancel on the checkout form', async ({ page }) => {
+  const checkoutPage = new CheckoutPage(page);
+  await checkoutPage.cancelOnForm();
+});
+
+Then('the tax should be {string}', async ({ page }, tax: string) => {
+  const checkoutPage = new CheckoutPage(page);
+  expect(await checkoutPage.getTax()).toBe(tax);
+});
+
+Then('the grand total should be {string}', async ({ page }, total: string) => {
+  const checkoutPage = new CheckoutPage(page);
+  expect(await checkoutPage.getGrandTotal()).toBe(total);
+});

@@ -62,3 +62,18 @@ Feature: Checkout
     And I fill checkout info with "John", "Doe", and "12345"
     And I cancel the order
     Then I should see "Products" as the page title
+
+  Scenario: Cancel on checkout form returns to cart
+    When I add "Sauce Labs Backpack" to the cart
+    And I go to the cart
+    And I proceed to checkout
+    And I cancel on the checkout form
+    Then I should see "Your Cart" as the page title
+
+  Scenario: Checkout overview shows tax and grand total
+    When I add "Sauce Labs Backpack" to the cart
+    And I go to the cart
+    And I proceed to checkout
+    And I fill checkout info with "John", "Doe", and "12345"
+    Then the tax should be "Tax: $2.40"
+    And the grand total should be "Total: $32.39"

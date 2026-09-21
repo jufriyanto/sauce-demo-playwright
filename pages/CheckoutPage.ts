@@ -45,4 +45,17 @@ export class CheckoutPage extends BasePage {
     await this.page.click('[data-test="cancel"]');
     await this.page.waitForURL('**/inventory.html');
   }
+
+  async cancelOnForm() {
+    await this.page.click('[data-test="cancel"]');
+    await this.page.waitForURL('**/cart.html');
+  }
+
+  async getTax(): Promise<string> {
+    return await this.page.locator('.summary_tax_label').innerText();
+  }
+
+  async getGrandTotal(): Promise<string> {
+    return await this.page.locator('.summary_total_label').innerText();
+  }
 }
