@@ -1,0 +1,19 @@
+{
+  "name": "sauce-demo-playwright",
+  "version": "1.0.0",
+  "description": "Playwright BDD automation portfolio project using Sauce Demo",
+  "private": true,
+  "scripts": {
+    "pretest": "bddgen",
+    "test": "playwright test",
+    "test:ui": "bddgen && playwright test --ui",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.6.2",
+    "dotenv": "^18.0.1",
+    "playwright-bdd": "^9.2.1",
+    "typescript": "^7.0.2"
+  }
+}
