@@ -22,3 +22,9 @@ Feature: Shopping Cart
     And I go to the cart
     And I remove "Sauce Labs Backpack" from the cart
     Then the cart should be empty
+
+  Scenario: Continue shopping from cart
+    When I add "Sauce Labs Backpack" to the cart
+    And I go to the cart
+    And I continue shopping
+    Then I should see "Products" as the page title

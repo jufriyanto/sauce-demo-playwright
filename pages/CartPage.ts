@@ -33,4 +33,8 @@ export class CartPage extends BasePage {
   async isEmpty(): Promise<boolean> {
     return (await this.page.locator(this.cartItems).count()) === 0;
   }
+
+  async continueShopping() {
+    await this.page.click('#continue-shopping');
+  }
 }

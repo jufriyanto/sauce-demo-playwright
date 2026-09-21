@@ -23,3 +23,16 @@ Feature: Products
     When I click on product "Sauce Labs Backpack"
     And I go back to products
     Then I should see "Products" as the page title
+
+  Scenario: Sort products by name A to Z
+    When I sort products by "az"
+    Then the first product should be "Sauce Labs Backpack"
+
+  Scenario: Sort products by price high to low
+    When I sort products by "hilo"
+    Then the first product should be "Sauce Labs Fleece Jacket"
+
+  Scenario: Add product to cart from detail page
+    When I click on product "Sauce Labs Backpack"
+    And I add the product to cart from the detail page
+    Then the cart badge should show "1"

@@ -27,4 +27,12 @@ export class CheckoutPage extends BasePage {
   async getConfirmationHeader(): Promise<string> {
     return await this.page.locator('.complete-header').innerText();
   }
+
+  async getOverviewItemNames(): Promise<string[]> {
+    return await this.page.locator('.cart_item .inventory_item_name').allInnerTexts();
+  }
+
+  async clickBackHome() {
+    await this.page.click('[data-test="back-to-products"]');
+  }
 }

@@ -30,3 +30,13 @@ Then('I should see the order confirmation {string}', async ({ page }, message: s
   const checkoutPage = new CheckoutPage(page);
   expect(await checkoutPage.getConfirmationHeader()).toBe(message);
 });
+
+Then('the order overview should contain {string}', async ({ page }, productName: string) => {
+  const checkoutPage = new CheckoutPage(page);
+  expect(await checkoutPage.getOverviewItemNames()).toContain(productName);
+});
+
+When('I go back home', async ({ page }) => {
+  const checkoutPage = new CheckoutPage(page);
+  await checkoutPage.clickBackHome();
+});

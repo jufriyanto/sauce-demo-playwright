@@ -43,3 +43,8 @@ Then('the cart should be empty', async ({ page }) => {
   const cartPage = new CartPage(page);
   expect(await cartPage.isEmpty()).toBe(true);
 });
+
+When('I continue shopping', async ({ page }) => {
+  const cartPage = new CartPage(page);
+  await cartPage.continueShopping();
+});

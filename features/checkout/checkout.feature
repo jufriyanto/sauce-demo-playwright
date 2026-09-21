@@ -24,3 +24,26 @@ Feature: Checkout
     And I proceed to checkout
     And I fill checkout info with "John", "", and "12345"
     Then I should see a checkout error "Last Name is required"
+
+  Scenario: Checkout requires zip code
+    When I add "Sauce Labs Backpack" to the cart
+    And I go to the cart
+    And I proceed to checkout
+    And I fill checkout info with "John", "Doe", and ""
+    Then I should see a checkout error "Postal Code is required"
+
+  Scenario: Checkout overview shows correct item
+    When I add "Sauce Labs Backpack" to the cart
+    And I go to the cart
+    And I proceed to checkout
+    And I fill checkout info with "John", "Doe", and "12345"
+    Then the order overview should contain "Sauce Labs Backpack"
+
+  Scenario: Back to shopping after order confirmation
+    When I add "Sauce Labs Backpack" to the cart
+    And I go to the cart
+    And I proceed to checkout
+    And I fill checkout info with "John", "Doe", and "12345"
+    And I finish the order
+    And I go back home
+    Then I should see "Products" as the page title

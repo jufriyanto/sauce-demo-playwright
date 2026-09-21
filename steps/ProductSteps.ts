@@ -40,3 +40,8 @@ When('I go back to products', async ({ page }) => {
   const detailPage = new ProductDetailPage(page);
   await detailPage.goBackToProducts();
 });
+
+When('I add the product to cart from the detail page', async ({ page }) => {
+  const detailPage = new ProductDetailPage(page);
+  await detailPage.addToCart();
+});

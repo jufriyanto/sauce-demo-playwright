@@ -13,4 +13,8 @@ export class ProductDetailPage extends BasePage {
   async goBackToProducts() {
     await this.page.click('#back-to-products');
   }
+
+  async addToCart() {
+    await this.page.locator('[data-test^="add-to-cart"]').click();
+  }
 }
