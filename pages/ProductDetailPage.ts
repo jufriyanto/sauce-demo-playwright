@@ -15,7 +15,7 @@ export class ProductDetailPage extends BasePage {
   }
 
   async addToCart() {
-    await this.page.locator('[data-test^="add-to-cart"]').click();
+    await this.page.locator('.inventory_details button[data-test^="add-to-cart"]').click();
   }
 
   async getDescription(): Promise<string> {
