@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## CI
+
+Tests run automatically on every push to `main` via GitHub Actions (`.github/workflows/playwright.yml`). Results and HTML report are uploaded as artifacts after each run.
+
 ## Commands
 
 ```bash
