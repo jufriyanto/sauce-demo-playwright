@@ -40,6 +40,7 @@ export class ProductsPage extends BasePage {
 
   async clickProduct(name: string) {
     await this.page.locator(`.inventory_item_name:text("${name}")`).click();
+    await this.page.waitForURL('**/inventory-item.html**');
   }
 
   async logout() {
