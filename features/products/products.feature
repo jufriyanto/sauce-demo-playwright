@@ -44,3 +44,7 @@ Feature: Products
 
   Scenario: Product price is displayed on the list
     Then I should see the price of "Sauce Labs Backpack" as "$29.99"
+
+  Scenario: Product detail page shows description
+    When I click on product "Sauce Labs Backpack"
+    Then I should see a product description on the detail page

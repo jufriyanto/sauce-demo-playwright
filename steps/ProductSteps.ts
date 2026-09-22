@@ -59,3 +59,9 @@ Then('I should see the price of {string} as {string}', async ({ page }, productN
   const productsPage = new ProductsPage(page);
   expect(await productsPage.getProductPrice(productName)).toBe(price);
 });
+
+Then('I should see a product description on the detail page', async ({ page }) => {
+  const detailPage = new ProductDetailPage(page);
+  const description = await detailPage.getDescription();
+  expect(description.length).toBeGreaterThan(0);
+});

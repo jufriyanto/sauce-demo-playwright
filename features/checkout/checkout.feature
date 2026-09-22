@@ -70,6 +70,14 @@ Feature: Checkout
     And I cancel on the checkout form
     Then I should see "Your Cart" as the page title
 
+  Scenario: Checkout with multiple items shows correct item total
+    When I add "Sauce Labs Backpack" to the cart
+    And I add "Sauce Labs Bike Light" to the cart
+    And I go to the cart
+    And I proceed to checkout
+    And I fill checkout info with "John", "Doe", and "12345"
+    Then the item total should be "Item total: $39.98"
+
   Scenario: Checkout overview shows tax and grand total
     When I add "Sauce Labs Backpack" to the cart
     And I go to the cart

@@ -13,3 +13,7 @@ Then('I should be on the login page', async ({ page }) => {
   await expect(page).toHaveURL('/');
   await expect(page.locator('#login-button')).toBeVisible();
 });
+
+When('I navigate directly to the inventory page', async ({ page }) => {
+  await page.goto('/inventory.html');
+});
